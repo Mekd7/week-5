@@ -1,12 +1,11 @@
-import pandas as pd
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.compose import ColumnTransformer
 
 class PreprocessingPipeline:
-    def build_transformer(self, num_features, cat_features):
+    def build_transformer(self, numeric_features, categorical_features):
         return ColumnTransformer(
             transformers=[
-                ("num", StandardScaler(), num_features),
-                ("cat", OneHotEncoder(handle_unknown="ignore"), cat_features)
+                ("num", StandardScaler(), numeric_features),
+                ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features)
             ]
         )
